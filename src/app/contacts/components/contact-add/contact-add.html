@@ -1,1 +1,57 @@
-<p>contact-add works!</p>
+<!-- FORMULARIO REACTIVO -->
+ <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Filas -->
+     <div class="form-row">
+    
+        <!-- Grupo de nombre -->
+     <div class="form-group">
+        <label for="name">Nombre</label>
+        <!-- Campo de texto por PrimeNG, conectado al control 'name' del formulario -->
+        <input id="name" pInputText formControlName="name" />
+        <!-- Validacion: Solo se muestra si el campo es invalido o ya fue tocado -->
+        <small *ngIf="form.controls.name.invalid && form.controls.name.touched"
+            class="p-error">
+            Nombre obligatorio
+        </small>
+    </div>
+
+    <!-- Grupo: Email -->
+     <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" pInputText formControlName="email" />
+        <small *ngIf="form.controls.email.invalid && form.controls.email.touched"
+            class="p-error">
+         Email invalido
+        </small> 
+     </div>
+
+     <!-- Grupo: Telefono -->
+     <div class="form-group">
+        <label for="phone">Teléfono</label>
+        <input id="phone" pInputText formControlName ="phone" />
+        <small *ngIf="form.controls.phone.invalid && form.controls.phone.touched"
+        class="p-error">
+        Telefono obligatorio
+    </small>
+     </div>
+    </div>
+
+    <!-- Botones al final del formulario -->
+    <div class="form-row" style="justify-content: flex-end;">
+
+        <!-- Boton para cancelar la edicion/creacion  -->
+        <button pButton type="button" label="Cancelar"
+            class="p-button-text p-button-secondary p-mr-2"
+            (click)="onCancel()"></button>
+        
+        <!-- Boton para enviar formulario -->
+         <button pButton type="submit"
+            [label]="form.get('id')!.value ? 'Modificar' : 'Crear' "
+            [icon]="form.get('id')!.value ? 'pi pi-pencil' : 'pi pi-plus'"
+            class="p-button-primary"
+            [disabled]="form.invalid">
+        </button>
+
+    </div>
+
+ </form>
