@@ -1,3 +1,10 @@
-<app-contact-add></app-contact-add>
+<!-- Título principal de la aplicación -->
+<h1>Contact Manager</h1>
+
+<!-- Componente personalizado para mostrar la lista de contactos.
+     El atributo #list es una referencia local al componente, 
+     aunque en este código HTML no se está usando directamente. 
+     El componente se conecta con el código TypeScript mediante @ViewChild -->
+<app-contact-list #list></app-contact-list>
 
 <router-outlet />
